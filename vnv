@@ -1,0 +1,81 @@
+#/bin/bash
+#set syn=sh
+ENV_DIR=$HOME/.envs
+function activate {
+	source ~/.envs/$1/bin/activate 
+}
+
+
+function make {
+	if [ -z $1 ]
+	then
+		echo "Please add a NAME for your virtual environment"
+	else
+        	virtualenv $HOME/.envs/$1
+	fi
+}
+
+function remove {
+	if [ -z $1 ]
+	then
+		echo "add a NAME for your virtual environment"
+	else
+        	rm -r $HOME/.envs/$NAME
+		echo "removed $NAME from virtual environments"
+	fi
+}
+
+
+# Loop through arguments and process them
+for arg in "$@"
+do
+    case $arg in
+	-h|--help)
+	echo "this is the help section"
+	shift
+        ;;
+        -ls)
+	ls $ENV_DIR
+        shift        
+	;;
+        -mk=*|--make=*)
+	NAME=${arg#*=}
+	make $NAME
+        shift
+        ;;
+        -mk|--make)
+	NAME=$2
+	make $NAME
+        shift
+        ;;
+        -rm=*|--remove=*)
+	NAME=${arg#*=}
+	remove $NAME
+        shift
+        ;;
+        -rm|--remove)
+	NAME=$2
+	remove $NAME
+        shift
+        ;;
+        -a=*|--activate=*)
+	VIRTUAL_ENV=${arg#*=}
+        activate $VIRTUAL_ENV	
+        shift
+        ;;
+        -a|--activate)
+	VIRTUAL_ENV=$2
+        activate $VIRTUAL_ENV	
+        shift
+        ;;
+        -d|--deactivate)
+        deactivate	
+        shift
+        ;;
+        *)
+        OTHER_ARGUMENTS+=("$1")
+	echo $1
+        shift # Remove generic argument from processing
+        ;;
+    esac
+done
