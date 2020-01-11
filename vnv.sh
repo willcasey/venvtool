@@ -1,10 +1,8 @@
 #/bin/bash
-#set syn=sh
 ENV_DIR=$HOME/.envs
 function activate {
 	source ~/.envs/$1/bin/activate 
 }
-
 
 function make {
 	if [ -z $1 ]
@@ -24,7 +22,6 @@ function remove {
 		echo "removed $NAME from virtual environments"
 	fi
 }
-
 
 # Loop through arguments and process them
 for arg in "$@"
