@@ -1,5 +1,5 @@
 #/bin/bash
-cp vnv /usr/local/bin/.
+sudo cp vnv /usr/local/bin/.
 echo 'alias vnv=". vnv"' >> $HOME/.bashrc
 
 mkdir $HOME/.envs/
