@@ -2,7 +2,7 @@
 <p>The venvtool is a simple, minimalistic tool to help you manage your 
 python virtual environments.
 You will easily be able to 
-**create**, **list**, **activate**, **deactivate** and **remove** your virtual environments.</p>
+*create, list, activate, deactivate and remove* your virtual environments.</p>
 
 ## Prereqs
 **1. You will need to install pip if you don't already have it.**
@@ -25,6 +25,7 @@ sh setup
 as well as create a default directory for your virtual environments in your systems'
 home directory.</p>
 You may be required to type in your password.
+
 **3. (Optional) you can now remove the venvtool directory that you downloaded**
 
 ## Sample Usage
