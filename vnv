@@ -7,7 +7,7 @@ function activate {
 function make {
 	if [ -z $1 ]
 	then
-		echo "Please add a NAME for your virtual environment"
+		echo "Please add a name for your virtual environment"
 	else
         	virtualenv $HOME/.envs/$1
 	fi
@@ -16,10 +16,10 @@ function make {
 function remove {
 	if [ -z $1 ]
 	then
-		echo "add a NAME for your virtual environment"
+		echo "add a name for your virtual environment"
 	else
-        	rm -r $HOME/.envs/$NAME
-		echo "removed $NAME from virtual environments"
+        	rm -r $HOME/.envs/$1
+		echo "removed $1 from virtual environments"
 	fi
 }
 
