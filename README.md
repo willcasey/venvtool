@@ -1,4 +1,4 @@
-j# A Minimilalist Approach to Managing Python Virtual Environments 
+## A Minimilalist Approach to Managing Python Virtual Environments 
 The venvtool is a simple, minimalistic tool to help you manage your 
 python virtual environments.
 
