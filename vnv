@@ -1,28 +1,9 @@
 #/bin/bash
-ENV_DIR=$HOME/.envs
-function activate {
-	source ~/.envs/$1/bin/activate 
-}
 
-function make {
-	if [ -z $1 ]
-	then
-		echo "Please add a name for your virtual environment"
-	else
-        	virtualenv $HOME/.envs/$1
-	fi
-}
+#GLOBAL VARS
+GLOBAL_ENV_DIR=$HOME/.envs
 
-function remove {
-	if [ -z $1 ]
-	then
-		echo "add a name for your virtual environment"
-	else
-        	rm -r $HOME/.envs/$1
-		echo "removed $1 from virtual environments"
-	fi
-}
-
+#FUNCTIONS
 function printhelp {
 	printf """
 Usage: vnv <command> argument
@@ -37,8 +18,38 @@ General Commands:
 """
 
 }
+function activate {
+	ENV_PATH=$GLOBAL_ENV_DIR/$1
+	if [ -z $ENV_PATH ]; then
+		echo "Please provide the name of the virtual environment you want to activate"
+	elif [ -e "$ENV_PATH" ]; then
+		source $ENV_PATH/bin/activate 
+	else
+		echo "$1 is not a valid virtual environment"
+	fi
+}
 
-# Loop through arguments and process them
+function make {
+	if [ -z $1 ]; then
+		echo "Please add a name for your virtual environment"
+	else
+        	virtualenv $HOME/.envs/$1
+	fi
+}
+
+function remove {
+	ENV_PATH=$GLOBAL_ENV_DIR/$1
+	if [ -z $1 ]; then
+		echo "add a name for your virtual environment"
+	elif [ -e "$ENV_PATH" ]; then
+        	rm -r $ENV_PATH
+		echo "removed $1 from virtual environments"
+	else
+		echo "$1 is not a valid virtual environment"
+	fi
+}
+
+
 for arg in "$@"
 do
     case $arg in
@@ -47,7 +58,7 @@ do
 	shift
         ;;
         -ls)
-	ls $ENV_DIR
+	ls $GLOBAL_ENV_DIR
         shift        
 	;;
         -c=*|--create=*)
@@ -82,11 +93,6 @@ do
         ;;
         -d|--deactivate)
         deactivate	
-        shift
-        ;;
-        *)
-        OTHER_ARGUMENTS+=("$1")
-	echo "$OTHER_ARGUEMENTS is not a valid arguement"
         shift
         ;;
     esac
