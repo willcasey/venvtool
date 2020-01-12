@@ -23,24 +23,39 @@ function remove {
 	fi
 }
 
+function printhelp {
+	printf """
+Usage: vnv <command> argument
+
+General Commands:
+-c <virtual_env>, --create <virtual_env>		Creates a virtual environment. 
+-a <virtual_env>, --activate <virtual_env>		Activates a virtual environment. 
+-rm <virtual_env>, --remove <virtual_env>		Removes a virtual environment from the directory.
+-ls 							List all available virtual environments.
+-d, --deactivate					Deactivates the current virtual environment.
+-h, --help						Shows help for commands.
+"""
+
+}
+
 # Loop through arguments and process them
 for arg in "$@"
 do
     case $arg in
 	-h|--help)
-	echo "this is the help section"
+	printhelp
 	shift
         ;;
         -ls)
 	ls $ENV_DIR
         shift        
 	;;
-        -mk=*|--make=*)
+        -c=*|--create=*)
 	NAME=${arg#*=}
 	make $NAME
         shift
         ;;
-        -mk|--make)
+        -c|--create)
 	NAME=$2
 	make $NAME
         shift
@@ -71,8 +86,8 @@ do
         ;;
         *)
         OTHER_ARGUMENTS+=("$1")
-	echo $1
-        shift # Remove generic argument from processing
+	echo "$OTHER_ARGUEMENTS is not a valid arguement"
+        shift
         ;;
     esac
 done
