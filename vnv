@@ -48,6 +48,19 @@ function remove {
 		echo "$1 is not a valid virtual environment"
 	fi
 }
+function copy {
+	ENV_PATH_1=$GLOBAL_ENV_DIR/$1
+	ENV_PATH_2=$GLOBAL_ENV_DIR/$2
+	if [ -z $1 ]; then
+		echo "add a name for your virtual environment you want to copy from"
+	elif [ -z $2 ]; then
+		echo "add a name of a virtual environment you want to copy to"
+	elif [ -e "$ENV_PATH_1" ]; then
+        	cp -r $ENV_PATH_1 $ENV_PATH_2
+	else
+		echo "$1 is not a valid virtual environment"
+	fi
+}
 
 
 for arg in "$@"
@@ -93,6 +106,10 @@ do
         ;;
         -d|--deactivate)
         deactivate	
+        shift
+        ;;
+        -cp)
+        copy $2 $3	
         shift
         ;;
     esac

@@ -16,7 +16,7 @@ pip install virtualenv
 
 ## Installation
 **1. Download or clone this repo**<br>
-**2. In your terminal, run the following command in the same directory where downloaded venvtool**
+**2. In your terminal, run the following command in the same directory where you downloaded venvtool**
 ```
 sh setup
 ```
@@ -56,8 +56,9 @@ vnv -d
 -c <virtual_env>, --create <virtual_env>		Creates a virtual environment. 
 -a <virtual_env>, --activate <virtual_env>		Activates a virtual environment. 
 -rm <virtual_env>, --remove <virtual_env>		Removes a virtual environment from the directory.
--ls 							List all available virtual environments.
 -d, --deactivate					Deactivates the current virtual environment.
+-ls 							List all available virtual environments.
+-cp <virtual_env> <new_virtual_env>			Copies an existing virtual environment to a new one.
 -h, --help						Shows help for commands.
 ```
 
