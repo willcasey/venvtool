@@ -1,7 +1,7 @@
 # A Minimilalist Approach to Managing Python Virtual Environments 
 <p>The venvtool is a simple, minimalistic tool to help you manage your 
 python virtual environments.<br>
-You will easily be able to create, list, activate, deactivate and remove your virtual environments.</p>
+You will easily be able to create, list, copy, activate, deactivate and remove your virtual environments.</p>
 
 ## Prereqs
 **1. Install pip if you don't already have it.**
