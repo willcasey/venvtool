@@ -3,13 +3,7 @@
 python virtual environments.<br>
 You will easily be able to create, list, copy, activate, deactivate and remove your virtual environments.</p>
 
-## Prereqs
-**1. Install pip if you don't already have it.**
-<br>One way to do that is:
-```
-sudo easy_install pip
-```
-**2. Install virtualenv using pip**
+**1. Install virtualenv using pip**
 ```
 pip install virtualenv
 ```
