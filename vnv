@@ -12,8 +12,9 @@ General Commands:
 -c <virtual_env>, --create <virtual_env>		Creates a virtual environment. 
 -a <virtual_env>, --activate <virtual_env>		Activates a virtual environment. 
 -rm <virtual_env>, --remove <virtual_env>		Removes a virtual environment from the directory.
--ls 							List all available virtual environments.
 -d, --deactivate					Deactivates the current virtual environment.
+-ls 							List all available virtual environments.
+-cp <virtual_env> <new_virtual_env>			Copies an existing virtual environment to a new one.
 -h, --help						Shows help for commands.
 """
 
