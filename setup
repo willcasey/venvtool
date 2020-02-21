@@ -7,4 +7,5 @@ mkdir $HOME/.envs/ > /dev/null 2>&1
 mkdir $VARS_DIR > /dev/null 2>&1
 touch $VARS_DIR/manager
 chmod 777 $VARS_DIR/manager
+echo "virtualenv" > $VARS_DIR/manager
 
