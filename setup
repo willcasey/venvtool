@@ -1,7 +1,10 @@
 #/bin/bash
+VARS_DIR=$HOME/.envs/.vars
 sudo cp vnv /usr/local/bin/.
 echo 'alias vnv=". vnv"' >> $HOME/.bashrc
-#export VNV_MANAGER="virtualenv"
 
-mkdir $HOME/.envs/
+mkdir $HOME/.envs/ > /dev/null 2>&1
+mkdir $VARS_DIR > /dev/null 2>&1
+touch $VARS_DIR/manager
+chmod 777 $VARS_DIR/manager
 
