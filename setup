@@ -1,6 +1,7 @@
 #/bin/bash
 sudo cp vnv /usr/local/bin/.
 echo 'alias vnv=". vnv"' >> $HOME/.bashrc
+#export VNV_MANAGER="virtualenv"
 
 mkdir $HOME/.envs/
 

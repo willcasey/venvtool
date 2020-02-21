@@ -2,6 +2,7 @@
 
 #GLOBAL VARS
 GLOBAL_ENV_DIR=$HOME/.envs
+MANAGER="virtualenv"
 
 #FUNCTIONS
 function printhelp {
@@ -62,8 +63,37 @@ function copy {
 		echo "$1 is not a valid virtual environment"
 	fi
 }
+function switchmanager {
+	MANAGERQUESTION="Your current manager is:
+$MANAGER 
 
+Choose the number of the
+virutal environment manager 
+you would like to use: 
+"
+	RETURN_STRING="Your manager is now: $MANAGER"
+	echo $MANAGERQUESTION 
+	select num in "virtualenv" "python"; do
+	    case $num in
+	        virtualenv ) MANAGER="virutalenv" 
+			     echo "Your manager is now: $MANAGER"
+			     break;;
+	        python ) MANAGER="python" 
+			 echo "Your manager is now: $MANAGER"
+			 break;;
+	    esac
+	done
+			
 
+#	while true; do
+#	    read -p $MANAGERQUESTION num 
+#	    case $num in
+#	        1) MANAGER="virtualenv"; break;;
+#	        2) MANAGER="python"; break;; 
+#	        * ) echo "You must enter a valid number";;
+#	    esac
+#	done
+}
 for arg in "$@"
 do
     case $arg in
@@ -111,6 +141,10 @@ do
         ;;
         -cp)
         copy $2 $3	
+        shift
+        ;;
+        manager)
+	switchmanager	
         shift
         ;;
     esac
