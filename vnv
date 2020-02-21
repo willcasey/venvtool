@@ -1,7 +1,7 @@
 #bin/bash
-
 #GLOBAL VARS
 GLOBAL_ENV_DIR=$HOME/.envs
+MANAGER=`cat $GLOBAL_ENV_DIR/.vars/manager`
 
 #FUNCTIONS
 function printhelp {
@@ -16,6 +16,9 @@ General Commands:
 -ls 							List all available virtual environments.
 -cp <virtual_env> <new_virtual_env>			Copies an existing virtual environment to a new one.
 -h, --help						Shows help for commands.
+
+Settings:
+manager							Allows toggle of virtual environment manager 
 """
 
 }
@@ -34,7 +37,11 @@ function make {
 	if [ -z $1 ]; then
 		echo "Please add a name for your virtual environment"
 	else
-        	virtualenv $HOME/.envs/$1
+		if [ $MANAGER = "python_venv" ]; then
+        		python -m venv $HOME/.envs/$1
+		elif [ $MANAGER = "virtualenv" ]; then 
+        		virtualenv $HOME/.envs/$1
+		fi
 	fi
 }
 
@@ -63,7 +70,32 @@ function copy {
 	fi
 }
 
+function switch_manager {
+	    echo $1 > $GLOBAL_ENV_DIR/.vars/manager
+	    echo "Your manager is now: $1"
+}
 
+function switch_manager_menu {
+	printf """Your current manager is:
+$MANAGER 
+
+Choose the number of the
+virutal environment manager 
+you would like to use: 
+"""
+ 
+	select num in "virtualenv" "python_venv"; do
+	    case $num in
+	        virtualenv ) MANAGER="virtualenv" 
+			     switch_manager $MANAGER
+		             break;;		
+	        python_venv ) MANAGER="python_venv" 
+			 switch_manager $MANAGER
+                         break;;
+		* ) echo "Please enter a valid number"
+	    esac
+	done
+}
 for arg in "$@"
 do
     case $arg in
@@ -111,6 +143,10 @@ do
         ;;
         -cp)
         copy $2 $3	
+        shift
+        ;;
+        manager)
+	switch_manager_menu
         shift
         ;;
     esac
