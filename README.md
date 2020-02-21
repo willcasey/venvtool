@@ -54,5 +54,8 @@ vnv -d
 -ls 							List all available virtual environments.
 -cp <virtual_env> <new_virtual_env>			Copies an existing virtual environment to a new one.
 -h, --help						Shows help for commands.
+
+Settings:
+manager                                                 Allows toggle of virtual environment manager:
 ```
 
