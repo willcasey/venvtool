@@ -3,11 +3,6 @@
 python virtual environments.<br>
 You will easily be able to create, list, copy, activate, deactivate and remove your virtual environments.</p>
 
-**1. Install virtualenv using pip**
-```
-pip install virtualenv
-```
-
 ## Installation
 **1. Download or clone this repo**<br>
 **2. In your terminal, run the following command in the same directory where you downloaded venvtool**
@@ -44,6 +39,14 @@ vnv -a <test_env>
 vnv -d
 ```
 
+### Supports multiple virtual environment managers<br>
+   **1**. python venv (set to default)<br>
+   **2**. virtualenv (requires a pip install)<br><br>
+**Just use the following command to toggle between managers:** 
+```
+vnv manager
+```
+
 
 ## Commands
 ```
@@ -54,5 +57,8 @@ vnv -d
 -ls 							List all available virtual environments.
 -cp <virtual_env> <new_virtual_env>			Copies an existing virtual environment to a new one.
 -h, --help						Shows help for commands.
+
+Settings:
+manager                                                 Allows toggle of virtual environment manager
 ```
 
