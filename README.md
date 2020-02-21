@@ -3,7 +3,7 @@
 python virtual environments.<br>
 You will easily be able to create, list, copy, activate, deactivate and remove your virtual environments.</p>
 
-## Installation
+## Installation (or Update)
 **1. Download or clone this repo**<br>
 **2. In your terminal, run the following command in the same directory where you downloaded venvtool**
 ```
